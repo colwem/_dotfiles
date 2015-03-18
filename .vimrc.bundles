@@ -7,8 +7,8 @@
 
     " Basics {
         set nocompatible        " Must be first line
-        set background=dark     " Assume a dark background
-        set noshellslash
+        "set background=dark     " Assume a dark background
+        "set noshellslash
     " }
 
     " Windows Compatible {
@@ -32,180 +32,188 @@
             " want to try them first.
             set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
           endif
+          set rtp+=$HOME/vimfiles/bundle/vundle/
         endif
     " }
 
-    " Setup Bundle Support {
+    " Setup Plugin Support {
         " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
-        set rtp+=$HOME/vimfiles/bundle/vundle/
-        call vundle#rc()
+        set rtp+=$HOME/.vim/bundle/Vundle.vim
+        call vundle#begin()
     " }
 
-    "" Add an UnBundle command {
-    "function! UnBundle(arg, ...)
+    "" Add an UnPlugin command {
+    "function! UnPlugin(arg, ...)
     "  let bundle = vundle#config#init_bundle(a:arg, a:000)
     "  call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
     "endfunction
 
-    "com! -nargs=+         UnBundle
-    "\ call UnBundle(<args>)
+    "com! -nargs=+         UnPlugin
+    "\ call UnPlugin(<args>)
     "" }
 
 " }
 
-" Bundles {
+" Plugins {
 
-    Bundle 'othree/html5.vim'
 
     " Deps {
-        Bundle 'gmarik/vundle'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
-        Bundle 'mileszs/ack.vim'
+        Plugin 'gmarik/vundle'
+        Plugin 'MarcWeber/vim-addon-mw-utils'
+        Plugin 'tomtom/tlib_vim'
+        Plugin 'mileszs/ack.vim'
         if executable('ag')
-            Bundle 'mileszs/ack.vim'
+            Plugin 'mileszs/ack.vim'
             let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
         elseif executable('ack-grep')
             let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle 'mileszs/ack.vim'
+            Plugin 'mileszs/ack.vim'
         elseif executable('ack')
-            Bundle 'mileszs/ack.vim'
+            Plugin 'mileszs/ack.vim'
         endif
     " }
+    Plugin 'othree/html5.vim'
 
     " stuff from before using vundle: ragtag, scratch, snipMate, surround
 
-    "Bundle 'tpope/vim-dispatch'
-    "Bundle 'plasticboy/vim-markdown'
-    "Bundle 'suan/vim-instant-markdown'
-    Bundle 'vim-pandoc/vim-pandoc'
+    "Plugin 'tpope/vim-dispatch'
+    "Plugin 'plasticboy/vim-markdown'
+    "Plugin 'suan/vim-instant-markdown'
+    Plugin 'vim-pandoc/vim-pandoc'
 
     " Colorscheme {
-    "Bundle 'altercation/vim-colors-solarized'
-        Bundle 'tomasr/molokai'
-        Bundle 'reedes/vim-colors-pencil'
+    "Plugin 'altercation/vim-colors-solarized'
+        Plugin 'tomasr/molokai'
+        Plugin 'reedes/vim-colors-pencil'
     " }
 
     " Completion {
-        "Bundle 'garbas/vim-snipmate'
-        Bundle 'honza/vim-snippets'
-        Bundle 'ervandew/supertab'
-        Bundle 'SirVer/ultisnips'
-        "Bundle 'Shougo/neocomplete.vim'
-        "Bundle 'Valloric/YouCompleteMe' "Not easy to get working on windows
+        "Plugin 'garbas/vim-snipmate'
+        Plugin 'honza/vim-snippets'
+        Plugin 'ervandew/supertab'
+        Plugin 'SirVer/ultisnips'
+        "Plugin 'Shougo/neocomplete.vim'
+        "Plugin 'Valloric/YouCompleteMe' "Not easy to get working on windows
     " }
 
-    Bundle 'matchit.zip'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'scrooloose/syntastic'
-    Bundle 'Lokaltog/vim-easymotion'
+    Plugin 'matchit.zip'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'Lokaltog/vim-easymotion'
 
     " Editing {
-        Bundle 'terryma/vim-multiple-cursors'
-        Bundle 'tpope/vim-surround'
+        Plugin 'terryma/vim-multiple-cursors'
+        Plugin 'tpope/vim-surround'
     " }
 
     " Writing {
-        Bundle 'reedes/vim-litecorrect'
-        Bundle 'reedes/vim-textobj-sentence'
-        Bundle 'reedes/vim-textobj-quote'
-        Bundle 'reedes/vim-wordy'
-        " Bundle 'kana/vim-textobject-user'
-        Bundle 'reedes/vim-lexical'
-        Bundle 'honza/writer.vim'
-        Bundle 'mikewest/vimroom'
+        Plugin 'reedes/vim-litecorrect'
+        Plugin 'reedes/vim-textobj-sentence'
+        Plugin 'reedes/vim-textobj-quote'
+        Plugin 'reedes/vim-wordy'
+        " Plugin 'kana/vim-textobject-user'
+        Plugin 'reedes/vim-lexical'
+        Plugin 'honza/writer.vim'
+        Plugin 'mikewest/vimroom'
     " }
         
     " Buffer/file navigation {
-        Bundle 'scrooloose/nerdtree'
-        Bundle 'dbakker/vim-projectroot'
-        Bundle 'kien/ctrlp.vim'
-        "Bundle 'Shougo/unite.vim'
-        "Bundle 'fholgado/minibufexpl.vim'
-        Bundle 'dockyard/vim-easydir'
+        Plugin 'scrooloose/nerdtree'
+        Plugin 'dbakker/vim-projectroot'
+        Plugin 'kien/ctrlp.vim'
+        "Plugin 'Shougo/unite.vim'
+        "Plugin 'fholgado/minibufexpl.vim'
+        Plugin 'dockyard/vim-easydir'
     " }
 
-    Bundle 'tpope/vim-scriptease'
-    Bundle 'tpope/vim-obsession'
-    Bundle 'bling/vim-airline'
-    "Bundle 'myusuf3/numbers.vim'
-    "Bundle 'airblade/vim-gitgutter'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'gorodinskiy/vim-coloresque'
-    ""Bundle 'html_autoclosetag.vim'
-    Bundle 'vim-scripts/css_color.vim'
+    Plugin 'tpope/vim-scriptease'
+    Plugin 'tpope/vim-obsession'
+    Plugin 'bling/vim-airline'
+    "Plugin 'myusuf3/numbers.vim'
+    "Plugin 'airblade/vim-gitgutter'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'gorodinskiy/vim-coloresque'
+    ""Plugin 'html_autoclosetag.vim'
+    Plugin 'vim-scripts/css_color.vim'
 
     " Latex {
-        "Bundle 'latex-mik.vim'
+        "Plugin 'latex-mik.vim'
         " probably doesn't work with miktex right. 
-        "Bundle 'LaTeX-Box-Team/LaTeX-Box'  
-        "Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-        "Bundle 'coot/atp_vim'
+        "Plugin 'LaTeX-Box-Team/LaTeX-Box'  
+        "Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+        "Plugin 'coot/atp_vim'
     " }
 
     " git {
-        "Bundle 'gregsexton/gitv'
-        Bundle 'tpope/vim-fugitive'
+        "Plugin 'gregsexton/gitv'
+        Plugin 'tpope/vim-fugitive'
     "}
 
     " search {
-        Bundle 'rking/ag.vim'
+        Plugin 'rking/ag.vim'
         "makes s like f but uses 2 chars 
-        Bundle 'goldfeld/vim-seek' 
+        Plugin 'goldfeld/vim-seek' 
     "}
 
-    Bundle 'sjl/gundo.vim'
+    Plugin 'sjl/gundo.vim'
 
     " Python {
-        Bundle 'klen/python-mode'
-        "Bundle 'fs111/pydoc.vim'
-        "Bundle 'sontek/rope-vim'
-        "Bundle 'andviro/flake8-vim'
-        "Bundle 'davidhalter/jedi-vim'
+        Plugin 'klen/python-mode'
+        "Plugin 'fs111/pydoc.vim'
+        "Plugin 'sontek/rope-vim'
+        "Plugin 'andviro/flake8-vim'
+        "Plugin 'davidhalter/jedi-vim'
     "}
 
     " Tags {
-        Bundle 'majutsushi/tagbar'
-        "Bundle 'xolox/vim-easytags'
+        Plugin 'majutsushi/tagbar'
+        "Plugin 'xolox/vim-easytags'
     "}
 
     " Productivity {
-        "Bundle 'itchyny/calendar.vim'
-        "Bundle 'vimoutliner/vimoutliner'
-        "Bundle 'fmoralesc/vim-pad'
-        Bundle 'edthedev/minion'
+        "Plugin 'itchyny/calendar.vim'
+        "Plugin 'vimoutliner/vimoutliner'
+        "Plugin 'fmoralesc/vim-pad'
+        Plugin 'edthedev/minion'
     "}
 
     " Marks {
-        "Bundle 'jacquesbh/vim-showmarks'
-        Bundle 'kshenoy/vim-signature'
+        "Plugin 'jacquesbh/vim-showmarks'
+        Plugin 'kshenoy/vim-signature'
     "}
 
     " Misc {
-        "Bundle 'vim-scripts/YankRing.vim'
-        "Bundle 'xolox/vim-shell'
-        "Bundle 'xolox/vim-misc'
+        "Plugin 'vim-scripts/YankRing.vim'
+        "Plugin 'xolox/vim-shell'
+        "Plugin 'xolox/vim-misc'
     "}
 
     " Node {
-        Bundle 'marijnh/tern_for_vim'
-        Bundle 'digitaltoad/vim-jade'
-        Bundle 'kchmck/vim-coffee-script'
+        Plugin 'marijnh/tern_for_vim'
+        Plugin 'digitaltoad/vim-jade'
+        Plugin 'kchmck/vim-coffee-script'
     "}
 
     " sql {
-        Bundle 'vim-scripts/SQLUtilities'
+        Plugin 'vim-scripts/SQLUtilities'
     "}
 
     " Alignment {
-        Bundle 'junegunn/vim-easy-align'
-        Bundle 'vim-scripts/Align'
-        Bundle 'godlygeek/tabular'
+        Plugin 'junegunn/vim-easy-align'
+        Plugin 'vim-scripts/Align'
+        Plugin 'godlygeek/tabular'
     "}
     
     " css {
-        Bundle 'groenewege/vim-less'
+        Plugin 'groenewege/vim-less'
     "}
 
 "}
+
+" unsetup {{{
+"
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+
+" }}}
