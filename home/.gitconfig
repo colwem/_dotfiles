@@ -3,7 +3,7 @@
 	email = colwem@gmail.com
 [core]
 	excludesfile = C:\\Users\\ColwellBC\\.config\\git\\ignore
-	autocrlf = true
+	autocrlf = input
 [push]
 	default = simple
 [branch]

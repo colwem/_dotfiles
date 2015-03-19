@@ -73,6 +73,13 @@ set noshellslash  "Needed sometimes in order to make BundleInstall work.
 set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+"set guifont=Courier_New:h9:cANSI
+set gfn=Monaco:h12
+"set guifont=Anonymice_Powerline:h9
+"set guifont=Ubuntu_Mono_derivative_Powerline:h9
+if has('win32')
+  set guifont=DeJaVu_Sans_Mono_for_Powerline:h9
+endif
 let &guioptions = substitute(&guioptions, "t", "", "g")
 set go=
 "set guioptions=eg
@@ -186,10 +193,6 @@ set relativenumber
 set number
 set laststatus=2  "By default vim doesn't seem to display the status line when
 " only a single window is open 
-"set guifont=Courier_New:h9:cANSI
-set guifont=DeJaVu_Sans_Mono_for_Powerline:h9
-"set guifont=Anonymice_Powerline:h9
-"set guifont=Ubuntu_Mono_derivative_Powerline:h9
 
 "}}}
 

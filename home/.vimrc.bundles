@@ -135,7 +135,7 @@
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'gorodinskiy/vim-coloresque'
     ""Plugin 'html_autoclosetag.vim'
-    Plugin 'vim-scripts/css_color.vim'
+    " Plugin 'vim-scripts/css_color.vim'
 
     " Latex {
         "Plugin 'latex-mik.vim'
@@ -180,7 +180,7 @@
 
     " Marks {
         "Plugin 'jacquesbh/vim-showmarks'
-        Plugin 'kshenoy/vim-signature'
+        " Plugin 'kshenoy/vim-signature'
     "}
 
     " Misc {
@@ -201,19 +201,19 @@
 
     " Alignment {
         Plugin 'junegunn/vim-easy-align'
-        Plugin 'vim-scripts/Align'
+        " Plugin 'vim-scripts/Align'
         Plugin 'godlygeek/tabular'
     "}
-    
+   
     " css {
         Plugin 'groenewege/vim-less'
     "}
 
 "}
 
-" unsetup {{{
+" unsetup {
 "
     call vundle#end()            " required
     filetype plugin indent on    " required
 
-" }}}
+" }
