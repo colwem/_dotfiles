@@ -74,13 +74,14 @@ set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 "set guifont=Courier_New:h9:cANSI
-set gfn=Monaco:h12
+set gfn=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+" set gfn=Monaco:h12
 "set guifont=Anonymice_Powerline:h9
 "set guifont=Ubuntu_Mono_derivative_Powerline:h9
 if has('win32')
   set guifont=DeJaVu_Sans_Mono_for_Powerline:h9
 endif
-let &guioptions = substitute(&guioptions, "t", "", "g")
+" let &guioptions = substitute(&guioptions, "t", "", "g")
 set go=
 "set guioptions=eg
 "make toggle button for menu
@@ -146,7 +147,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(':DiffOrig')
   command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+                  \ | wincmd p | diffthis
 endif
 
 
@@ -192,7 +193,7 @@ set cursorline
 set relativenumber
 set number
 set laststatus=2  "By default vim doesn't seem to display the status line when
-" only a single window is open 
+ " only a single window is open 
 
 "}}}
 
@@ -244,7 +245,7 @@ endif
 " 21 command line editing"{{{
 set undofile
 set undodir=$HOME/.undodir/,.
-set directory=$TEMP/,.
+set directory=$TMPDIR/,.
  
 if &history < 1000
   set history=200		" keep 200 lines of command line history
@@ -371,7 +372,7 @@ nnoremap <leader>gt :GundoToggle<CR>
 "}}}
 
 " Airline config"{{{
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 "}}}
 
@@ -398,21 +399,21 @@ let g:sqlutil_align_comma = 1
 "}}}
 
 " CTRLP config"{{{
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlPLastMode'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
-let g:ctrlp_mruf_exclude = '^.*\\doc\\.*'
+" let g:ctrlp_map = '<leader>p'
+" let g:ctrlp_cmd = 'CtrlPLastMode'
+" let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
+" let g:ctrlp_mruf_exclude = '^.*\\doc\\.*'
 
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn)|[\/](node_modules)$',
-            \ 'file': '\v\.(exe|so|dll|pyc)$'
-            \}
+" let g:ctrlp_custom_ignore = {
+            " \ 'dir':  '\v[\/]\.(git|hg|svn)|[\/](node_modules)$',
+            " \ 'file': '\v\.(exe|so|dll|pyc)$'
+            " \}
 
 "'bundle' "\\.*\\doc' "\|\\vim\\.*\\doc'
-map <leader>pm :CtrlPMRU<cr>
-map <leader>pb :CtrlPBuffer<cr>
-" map <leader>pf :CtrlP<cr>
-nnoremap <silent> <leader>pf :exe 'CtrlP' ProjectRootGuess()<cr>
+" map <leader>pm :CtrlPMRU<cr>
+" map <leader>pb :CtrlPBuffer<cr>
+" " map <leader>pf :CtrlP<cr>
+" nnoremap <silent> <leader>pf :exe 'CtrlP' ProjectRootGuess()<cr>
 ""}}}
 
 " Sytastic config {{{
@@ -514,3 +515,12 @@ endf
 " set fo -= 'o'
 nnoremap <space> a 
 nnoremap <backspace> hxi
+
+
+" ctrlspace {{{
+ let g:airline_exclude_preview=1 
+" }}}
+
+" Ultisnips {{{
+let g:UltiSnipsExpandTrigger="<c-j>"
+" }}}

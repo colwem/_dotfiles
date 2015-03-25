@@ -62,7 +62,6 @@
         Plugin 'gmarik/vundle'
         Plugin 'MarcWeber/vim-addon-mw-utils'
         Plugin 'tomtom/tlib_vim'
-        Plugin 'mileszs/ack.vim'
         if executable('ag')
             Plugin 'mileszs/ack.vim'
             let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
@@ -91,15 +90,15 @@
     " Completion {
         "Plugin 'garbas/vim-snipmate'
         Plugin 'honza/vim-snippets'
-        Plugin 'ervandew/supertab'
+        " Plugin 'ervandew/supertab'
         Plugin 'SirVer/ultisnips'
         "Plugin 'Shougo/neocomplete.vim'
-        "Plugin 'Valloric/YouCompleteMe' "Not easy to get working on windows
+        Plugin 'Valloric/YouCompleteMe' "Not easy to get working on windows
     " }
 
     Plugin 'matchit.zip'
     Plugin 'tpope/vim-repeat'
-    Plugin 'scrooloose/syntastic'
+    " Plugin 'scrooloose/syntastic'
     Plugin 'Lokaltog/vim-easymotion'
 
     " Editing {
@@ -108,32 +107,33 @@
     " }
 
     " Writing {
-        Plugin 'reedes/vim-litecorrect'
-        Plugin 'reedes/vim-textobj-sentence'
-        Plugin 'reedes/vim-textobj-quote'
-        Plugin 'reedes/vim-wordy'
-        " Plugin 'kana/vim-textobject-user'
-        Plugin 'reedes/vim-lexical'
-        Plugin 'honza/writer.vim'
-        Plugin 'mikewest/vimroom'
+        " Plugin 'reedes/vim-litecorrect'
+        " Plugin 'reedes/vim-textobj-sentence'
+        " Plugin 'reedes/vim-textobj-quote'
+        " Plugin 'reedes/vim-wordy'
+        " " Plugin 'kana/vim-textobject-user'
+        " Plugin 'reedes/vim-lexical'
+        " Plugin 'honza/writer.vim'
+        " Plugin 'mikewest/vimroom'
     " }
         
     " Buffer/file navigation {
         Plugin 'scrooloose/nerdtree'
         Plugin 'dbakker/vim-projectroot'
-        Plugin 'kien/ctrlp.vim'
+        " Plugin 'kien/ctrlp.vim'
         "Plugin 'Shougo/unite.vim'
         "Plugin 'fholgado/minibufexpl.vim'
         Plugin 'dockyard/vim-easydir'
     " }
 
-    Plugin 'tpope/vim-scriptease'
-    Plugin 'tpope/vim-obsession'
+    " Plugin 'tpope/vim-scriptease'
+    " Plugin 'tpope/vim-obsession'
     Plugin 'bling/vim-airline'
     "Plugin 'myusuf3/numbers.vim'
     "Plugin 'airblade/vim-gitgutter'
     Plugin 'scrooloose/nerdcommenter'
-    Plugin 'gorodinskiy/vim-coloresque'
+    " Plugin 'gorodinskiy/vim-coloresque'
+    Plugin 'szw/vim-ctrlspace'
     ""Plugin 'html_autoclosetag.vim'
     " Plugin 'vim-scripts/css_color.vim'
 
@@ -146,7 +146,7 @@
     " }
 
     " git {
-        "Plugin 'gregsexton/gitv'
+        " Plugin 'gregsexton/gitv'
         Plugin 'tpope/vim-fugitive'
     "}
 
@@ -167,7 +167,7 @@
     "}
 
     " Tags {
-        Plugin 'majutsushi/tagbar'
+        " Plugin 'majutsushi/tagbar'
         "Plugin 'xolox/vim-easytags'
     "}
 
@@ -175,7 +175,7 @@
         "Plugin 'itchyny/calendar.vim'
         "Plugin 'vimoutliner/vimoutliner'
         "Plugin 'fmoralesc/vim-pad'
-        Plugin 'edthedev/minion'
+        " Plugin 'edthedev/minion'
     "}
 
     " Marks {
@@ -190,13 +190,13 @@
     "}
 
     " Node {
-        Plugin 'marijnh/tern_for_vim'
-        Plugin 'digitaltoad/vim-jade'
-        Plugin 'kchmck/vim-coffee-script'
+        " Plugin 'marijnh/tern_for_vim'
+        " Plugin 'digitaltoad/vim-jade'
+        " Plugin 'kchmck/vim-coffee-script'
     "}
 
     " sql {
-        Plugin 'vim-scripts/SQLUtilities'
+        " Plugin 'vim-scripts/SQLUtilities'
     "}
 
     " Alignment {

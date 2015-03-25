@@ -1,7 +1,6 @@
 # vim: ft=sh
 # Add `~/bin` to the `$PATH`
 export PATH=".:$HOME/bin:$PATH";
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -50,3 +49,6 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # set vi mode
 set -o vi
+export HOMEBREW_GITHUB_API_TOKEN=b42f96b34a95d04bdabcb2a73bd64477890795f4
+
+source ~/.git-completion.bash
