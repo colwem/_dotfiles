@@ -333,20 +333,20 @@ endfunction
 
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nmap <silent> gc :set opfunc=TitleCase<CR>g@
-vmap <silent> gc :<C-U>call TitleCase(visualmode(), 1)<CR>
+" nmap <silent> gc :set opfunc=TitleCase<CR>g@
+" vmap <silent> gc :<C-U>call TitleCase(visualmode(), 1)<CR>
 
-function! TitleCase(type, ...)
-    if a:0  " Invoked from Visual mode, use '< and '> marks.
-        silent  :`<,`>s/\<./\u&/g
-    elseif a:type == 'line'
-         :'[,']s/\<./\u&/g
-    elseif a:type == 'block'
-        silent :`[,`]s/\<./\u&/g
-    else
-        exe "normal! :'[,']s/\<./\u&/g"
-    endif
-endfunction
+" function! TitleCase(type, ...)
+    " if a:0  " Invoked from Visual mode, use '< and '> marks.
+        " silent  :`<,`>s/\<./\u&/g
+    " elseif a:type == 'line'
+         " :'[,']s/\<./\u&/g
+    " elseif a:type == 'block'
+        " silent :`[,`]s/\<./\u&/g
+    " else
+        " exe "normal! :'[,']s/\<./\u&/g"
+    " endif
+" endfunction
 "}}}
 
 " Gundo Setting"{{{
@@ -414,7 +414,9 @@ let g:sqlutil_align_comma = 1
 " map <leader>pb :CtrlPBuffer<cr>
 " " map <leader>pf :CtrlP<cr>
 " nnoremap <silent> <leader>pf :exe 'CtrlP' ProjectRootGuess()<cr>
+let g:ctrlp_cmd = 'CtrlPMRU'
 ""}}}
+
 
 " Sytastic config {{{
 let g:syntastic_error_symbol = '▶'
@@ -518,9 +520,37 @@ nnoremap <backspace> hxi
 
 
 " ctrlspace {{{
- let g:airline_exclude_preview=1 
+let g:airline_exclude_preview=1 
+
+if executable("ag") 
+  let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
+endif
 " }}}
 
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="<c-j>"
+" }}}
+
+" DelimitMate {{{
+
+let g:delimitMate_expand_cr = 2
+let g:delimitMate_expand_space = 1 
+
+" }}}
+
+" Bufexplorer {{{
+  let g:bufExplorerSortBy='mru'        " Sort by most recently used.
+  let g:bufExplorerSplitBelow=1        " Split new window below current.
+  let g:bufExplorerSplitHorzSize=10     " New split window is n rows high.
+  let g:bufExplorerFindActive=0        " Do not go to active window.
+" }}}
+
+" vim-eighties {{{
+  let g:eighties_bufname_additional_patterns = ['Tagbar'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
+
+
+" Tagbar {{{
+  let g:tagbar_width = 30               "Set width of the __Tagbar__ window
+  let g:tagbar_sort = 0                 "Sort by location in file
+  nnoremap <Leader>tb :TagbarOpen 'j'<CR>
 " }}}

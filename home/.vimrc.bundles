@@ -39,19 +39,9 @@
     " Setup Plugin Support {
         " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
-        set rtp+=$HOME/.vim/bundle/Vundle.vim
+        set rtp+=~/.vim/bundle/Vundle.vim
         call vundle#begin()
     " }
-
-    "" Add an UnPlugin command {
-    "function! UnPlugin(arg, ...)
-    "  let bundle = vundle#config#init_bundle(a:arg, a:000)
-    "  call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-    "endfunction
-
-    "com! -nargs=+         UnPlugin
-    "\ call UnPlugin(<args>)
-    "" }
 
 " }
 
@@ -59,7 +49,7 @@
 
 
     " Deps {
-        Plugin 'gmarik/vundle'
+        Plugin 'gmarik/Vundle.vim'
         Plugin 'MarcWeber/vim-addon-mw-utils'
         Plugin 'tomtom/tlib_vim'
         if executable('ag')
@@ -87,6 +77,10 @@
         Plugin 'reedes/vim-colors-pencil'
     " }
 
+    " Project Management {
+        Plugin 'tpope/vim-obsession'
+    " }
+
     " Completion {
         "Plugin 'garbas/vim-snipmate'
         Plugin 'honza/vim-snippets'
@@ -96,119 +90,140 @@
         Plugin 'Valloric/YouCompleteMe' "Not easy to get working on windows
     " }
 
-    Plugin 'matchit.zip'
-    Plugin 'tpope/vim-repeat'
     " Plugin 'scrooloose/syntastic'
-    Plugin 'Lokaltog/vim-easymotion'
 
     " Editing {
+        Plugin 'matchit.zip'
+        Plugin 'tpope/vim-repeat'
+        Plugin 'tpope/vim-abolish'
         Plugin 'terryma/vim-multiple-cursors'
         Plugin 'tpope/vim-surround'
+        Plugin 'Raimondi/delimitMate'
+        Plugin 'tpope/vim-commentary'
+        Plugin 'scrooloose/nerdcommenter'
+        Plugin 'sjl/gundo.vim'
+        Plugin 'svermeulen/vim-easyclip'
     " }
-
-    " Writing {
-        " Plugin 'reedes/vim-litecorrect'
-        " Plugin 'reedes/vim-textobj-sentence'
-        " Plugin 'reedes/vim-textobj-quote'
-        " Plugin 'reedes/vim-wordy'
-        " " Plugin 'kana/vim-textobject-user'
-        " Plugin 'reedes/vim-lexical'
-        " Plugin 'honza/writer.vim'
-        " Plugin 'mikewest/vimroom'
+    
+    " Motion {
+        Plugin 'Lokaltog/vim-easymotion'
     " }
+    
+    
         
     " Buffer/file navigation {
         Plugin 'scrooloose/nerdtree'
         Plugin 'dbakker/vim-projectroot'
-        " Plugin 'kien/ctrlp.vim'
+        Plugin 'kien/ctrlp.vim'
+        Plugin 'jlanzarotta/bufexplorer'
+        Plugin 'dockyard/vim-easydir'
         "Plugin 'Shougo/unite.vim'
         "Plugin 'fholgado/minibufexpl.vim'
-        Plugin 'dockyard/vim-easydir'
     " }
 
-    " Plugin 'tpope/vim-scriptease'
-    " Plugin 'tpope/vim-obsession'
-    Plugin 'bling/vim-airline'
-    "Plugin 'myusuf3/numbers.vim'
-    "Plugin 'airblade/vim-gitgutter'
-    Plugin 'scrooloose/nerdcommenter'
-    " Plugin 'gorodinskiy/vim-coloresque'
-    Plugin 'szw/vim-ctrlspace'
-    ""Plugin 'html_autoclosetag.vim'
-    " Plugin 'vim-scripts/css_color.vim'
-
-    " Latex {
-        "Plugin 'latex-mik.vim'
-        " probably doesn't work with miktex right. 
-        "Plugin 'LaTeX-Box-Team/LaTeX-Box'  
-        "Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-        "Plugin 'coot/atp_vim'
+    " UI {
+        Plugin 'justincampbell/vim-eighties'
+        Plugin 'bling/vim-airline'
+        Plugin 'airblade/vim-gitgutter'
+        Plugin 'gorodinskiy/vim-coloresque'
+        " Plugin 'tpope/vim-scriptease'
+        " Plugin 'colwem/vim-ctrlspace'
+        "Plugin 'myusuf3/numbers.vim'
+        ""Plugin 'html_autoclosetag.vim'
     " }
-
-    " git {
-        " Plugin 'gregsexton/gitv'
-        Plugin 'tpope/vim-fugitive'
+    
+    " Alignment {
+        Plugin 'junegunn/vim-easy-align'
+        Plugin 'godlygeek/tabular'
+        " Plugin 'vim-scripts/Align'
     "}
-
+        
     " search {
         Plugin 'rking/ag.vim'
         "makes s like f but uses 2 chars 
         Plugin 'goldfeld/vim-seek' 
     "}
 
-    Plugin 'sjl/gundo.vim'
-
-    " Python {
-        Plugin 'klen/python-mode'
-        "Plugin 'fs111/pydoc.vim'
-        "Plugin 'sontek/rope-vim'
-        "Plugin 'andviro/flake8-vim'
-        "Plugin 'davidhalter/jedi-vim'
-    "}
-
     " Tags {
-        " Plugin 'majutsushi/tagbar'
-        "Plugin 'xolox/vim-easytags'
-    "}
+        Plugin 'majutsushi/tagbar'
+        Plugin 'xolox/vim-easytags'
+    " }
 
     " Productivity {
         "Plugin 'itchyny/calendar.vim'
         "Plugin 'vimoutliner/vimoutliner'
         "Plugin 'fmoralesc/vim-pad'
-        " Plugin 'edthedev/minion'
+        "Plugin 'edthedev/minion'
     "}
 
     " Marks {
         "Plugin 'jacquesbh/vim-showmarks'
-        " Plugin 'kshenoy/vim-signature'
+        "Plugin 'kshenoy/vim-signature'
     "}
 
     " Misc {
+        Plugin 'xolox/vim-misc'
         "Plugin 'vim-scripts/YankRing.vim'
         "Plugin 'xolox/vim-shell'
-        "Plugin 'xolox/vim-misc'
     "}
+        
+    " tech specific {
+    
+        " css {
+            Plugin 'hail2u/vim-css3-syntax'
+            Plugin 'groenewege/vim-less'
+            Plugin 'cakebaker/scss-syntax.vim'
+            " Plugin 'vim-scripts/css_color.vim'
+            " Plugin 'skammer/vim-css-color'
+        "}
 
-    " Node {
-        " Plugin 'marijnh/tern_for_vim'
-        " Plugin 'digitaltoad/vim-jade'
-        " Plugin 'kchmck/vim-coffee-script'
-    "}
+        " git {
+            " Plugin 'gregsexton/gitv'
+            Plugin 'tpope/vim-fugitive'
+        "}
 
-    " sql {
-        " Plugin 'vim-scripts/SQLUtilities'
-    "}
+        " javascript {
+            Plugin 'pangloss/vim-javascript'
+        " }
+    
+        " Latex {
+            "Plugin 'latex-mik.vim'
+            " probably doesn't work with miktex right. 
+            "Plugin 'LaTeX-Box-Team/LaTeX-Box'  
+            "Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+            "Plugin 'coot/atp_vim'
+        " }
 
-    " Alignment {
-        Plugin 'junegunn/vim-easy-align'
-        " Plugin 'vim-scripts/Align'
-        Plugin 'godlygeek/tabular'
-    "}
-   
-    " css {
-        Plugin 'groenewege/vim-less'
-    "}
+        " Node {
+            Plugin 'marijnh/tern_for_vim'
+            " Plugin 'digitaltoad/vim-jade'
+            " Plugin 'kchmck/vim-coffee-script'
+        "}
 
+        " Prose {
+            " Plugin 'reedes/vim-litecorrect'
+            " Plugin 'reedes/vim-textobj-sentence'
+            " Plugin 'reedes/vim-textobj-quote'
+            " Plugin 'reedes/vim-wordy'
+            " " Plugin 'kana/vim-textobject-user'
+            " Plugin 'reedes/vim-lexical'
+            " Plugin 'honza/writer.vim'
+            " Plugin 'mikewest/vimroom'
+        " }
+        
+        " Python {
+            Plugin 'klen/python-mode'
+            "Plugin 'fs111/pydoc.vim'
+            "Plugin 'sontek/rope-vim'
+            "Plugin 'andviro/flake8-vim'
+            "Plugin 'davidhalter/jedi-vim'
+        "}
+
+        " sql {
+            " Plugin 'vim-scripts/SQLUtilities'
+        "}
+        
+    " }
 "}
 
 " unsetup {
