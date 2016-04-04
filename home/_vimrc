@@ -1,4 +1,5 @@
 " vim: foldmethod=marker foldlevel=0 foldenable
+
 set nocompatible
 
 "Needed sometimes in order to make BundleInstall work.
@@ -50,9 +51,11 @@ vnoremap <leader>c <esc>`>a}}<esc>`<i{{c1::<esc>
 " Tagbar config"{{{
 let g:tagbar_autoclose=0
 let g:tagbar_left=0
+let g:tagbar_width = 30               "Set width of the __Tagbar__ window
+let g:tagbar_sort = 0                 "Sort by location in file
 noremap <leader>ta :TagbarOpenAutoClose<CR>
 noremap <leader>tt :TagbarToggle<CR>
-noremap <leader>to :TagbarOpen<CR>
+noremap <leader>to :TagbarOpen 'f'<CR>
 noremap <leader>tc :TagbarClose<CR>
 noremap <leader>tp :TagbarTogglePause<CR>
 "}}}
@@ -74,7 +77,7 @@ set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 "set guifont=Courier_New:h9:cANSI
-set gfn=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+set gfn=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 " set gfn=Monaco:h12
 "set guifont=Anonymice_Powerline:h9
 "set guifont=Ubuntu_Mono_derivative_Powerline:h9
@@ -145,36 +148,38 @@ endif " has("autocmd")
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
-if !exists(':DiffOrig')
-  command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                  \ | wincmd p | diffthis
-endif
+" if !exists(':DiffOrig')
+"   command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+"                   \ | wincmd p | diffthis
+" endif
 
 
-set diffexpr=MyDiff()
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction"}}}
+" For windows only!!!
+" set diffexpr=MyDiff()
+" function! MyDiff()
+"   let opt = '-a --binary '
+"   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"   let arg1 = v:fname_in
+"   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"   let arg2 = v:fname_new
+"   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"   let arg3 = v:fname_out
+"   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"   let eq = ''
+"   if $VIMRUNTIME =~ ' '
+"     if &sh =~ '\<cmd'
+"       let cmd = '""' . $VIMRUNTIME . '\diff"'
+"       let eq = '"'
+"     else
+"       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"     endif
+"   else
+"     let cmd = $VIMRUNTIME . '\diff'
+"   endif
+"   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+" endfunction
+"}}}
 
 "Display options"{{{
 set background=dark
@@ -291,9 +296,10 @@ endfunction
 " Python"{{{
 " pymode config"{{{
 
-"let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
 let g:pymode_lint_ignore = 'E501,E221,W'
+let g:pymode_folding = 0
 
 set foldmethod=indent
 set foldlevel=99
@@ -409,6 +415,12 @@ let g:sqlutil_align_comma = 1
             " \ 'file': '\v\.(exe|so|dll|pyc)$'
             " \}
 
+
+let g:ctrlp_mruf_exclude = 'vim/runtime/doc/.*'
+let g:ctrlp_prompt_mappings = { 'ToggleMRURelative()': ['<F2>'] }
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+
 "'bundle' "\\.*\\doc' "\|\\vim\\.*\\doc'
 " map <leader>pm :CtrlPMRU<cr>
 " map <leader>pb :CtrlPBuffer<cr>
@@ -460,11 +472,6 @@ map <Leader>w- <C-w>_
 map zl zL
 map zh zH
 
-" don't know how to make this work in all situations, use C-[ instead
-inoremap jk <Esc>
-cnoremap jk <c-c>
-"vnoremap jk <Esc>
-
 " Pandoc"{{{
   let g:pandoc_use_hard_wraps = 1
   let g:pandoc_auto_format = 1
@@ -480,7 +487,7 @@ let NERDSpaceDelims = 1
 
 " command Ercs :e ~/_vimrc ~/.vimrc.bundles
 
-nnoremap <Leader>pcd :ProdjectRootLCD<cr>
+" nnoremap <Leader>pcd :ProdjectRootLCD<cr>
 " au BufEnter * if &ft != 'help' | ProjectRootLCD | endif
 
 " Grep
@@ -529,6 +536,7 @@ endif
 
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsEditSplit='vertical'
 " }}}
 
 " DelimitMate {{{
@@ -547,10 +555,97 @@ let g:delimitMate_expand_space = 1
 
 " vim-eighties {{{
   let g:eighties_bufname_additional_patterns = ['Tagbar'] " Defaults to [], 'fugitiveblame' is only an example. Takes a comma delimited list of bufnames as strings.
-
-
-" Tagbar {{{
-  let g:tagbar_width = 30               "Set width of the __Tagbar__ window
-  let g:tagbar_sort = 0                 "Sort by location in file
-  nnoremap <Leader>tb :TagbarOpen 'j'<CR>
 " }}}
+
+" Easyclip {{{
+" let g:EasyClipShareYanks=1 "use yank file so that yanks are persistent and
+                           " "shared between instances of vim
+set clipboard=unnamed "default register is now system clipboard
+" let g:EasyClipUsePasteToggleDefaults = 0 "<c-n> and <c-p> are already used
+
+" nmap <c-f> <plug>EasyClipSwapPasteForward 
+" nmap <c-d> <plug>EasyClipSwapPasteBackwards
+" }}}
+
+" Easymotion {{{
+
+    nmap <Leader><Leader>s <Plug>(easymotion-sn)
+    xmap <Leader><Leader>s <Plug>(easymotion-sn)
+    omap <Leader><Leader>z <Plug>(easymotion-sn)
+
+    " let g:EasyMotion_use_upper = 1
+    " let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+    let g:EasyMotion_do_shade = 1
+
+" }}}
+
+" smalls {{{
+
+let g:smalls_auto_jump = 1
+
+" map normal-mode 's' for simple search
+nmap s <Plug>(smalls)
+" }}}
+
+" Easytags {{{
+  let g:easytags_async=1
+  " let g:easytags_languages = {
+  " \   'javascript': {
+  " \     'cmd': 'jsctags',
+  " \       'args': [],
+  " \       'fileoutput_opt': '--f',
+  " \       'stdout_opt': '-f-',
+  " \   }
+  " \}
+" }}}
+
+" Sideways {{{
+
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>
+
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI
+
+" }}}
+
+" fieldtrip {{{
+let g:fieldtrip_start_map = '<leader>f'
+" }}}
+
+" to set specific settings for for specific files
+" au BufRead,BufNewFile <pathglob> <cmds>
+
+" au FileType <ext> <cmds>
+" to set specific settings for specific filetypes.
+
+" Join to begining of line rather than end
+nnoremap <leader>J ddpkJ
+nnoremap S i<cr><esc>k$
+
+
+" delete whitespace when writing to file
+autocmd FileType javascript,html,python autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_color_change_percent = 5
+
+" bufexplorer
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+
+
+" sets up 80 char column highlight
+set colorcolumn=+1
+
+" move to middle of line
+noremap <expr> gm ((indent('.') + strdisplaywidth(substitute(getline('.'), '\s*$', '', ''))) / 2) . '<Bar>'
+
+
+" synstack
+command! SS echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+
+" call matchaddpos('Search', [line('.')])

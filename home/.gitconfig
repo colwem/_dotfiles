@@ -2,9 +2,9 @@
 	name = Martin Colwell
 	email = colwem@gmail.com
 [core]
-	excludesfile = C:\\Users\\ColwellBC\\.config\\git\\ignore
+	excludesfile = /Users/colwem/.gitignore
 	autocrlf = input
-	editor = mvim
+	editor = mvim -f
 [push]
 	default = simple
 [branch]
@@ -38,5 +38,8 @@
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	ls = ls-files
 	ign = ls-files -o -i --exclude-standard
+	last = log -1 HEAD
+	alias = config --get-regexp ^alias\\.
+	unstage = reset HEAD
 [url "https://"]
 	insteadOf = git://

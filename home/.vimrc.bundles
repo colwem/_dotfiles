@@ -49,7 +49,7 @@
 
 
     " Deps {
-        Plugin 'gmarik/Vundle.vim'
+        Plugin 'VundleVim/vundle.vim'
         Plugin 'MarcWeber/vim-addon-mw-utils'
         Plugin 'tomtom/tlib_vim'
         if executable('ag')
@@ -70,6 +70,9 @@
     "Plugin 'plasticboy/vim-markdown'
     "Plugin 'suan/vim-instant-markdown'
     Plugin 'vim-pandoc/vim-pandoc'
+    Plugin 'vim-pandoc/vim-pandoc-syntax'
+    Plugin 'kana/vim-submode' "allows creation of custom modes
+    Plugin 'dahu/vimple' "Provides commands for more easily dealing with ex-commands that print messages
 
     " Colorscheme {
     "Plugin 'altercation/vim-colors-solarized'
@@ -102,15 +105,20 @@
         Plugin 'tpope/vim-commentary'
         Plugin 'scrooloose/nerdcommenter'
         Plugin 'sjl/gundo.vim'
-        Plugin 'svermeulen/vim-easyclip'
+        " Plugin 'svermeulen/vim-easyclip'
+        Plugin 'AndrewRadev/sideways.vim' "reorder arguments and list elements
+        Plugin 'tek/vim-fieldtrip' "submode interface to sideways
+        Plugin 'triglav/vim-visual-increment' "increments numbers in visual mode
+        Plugin 'tpope/vim-sleuth'        " Heuristically set shiftwidth and
+                                         " expandtab for buffer 
     " }
     
     " Motion {
         Plugin 'Lokaltog/vim-easymotion'
+        Plugin 't9md/vim-smalls'
     " }
     
-    
-        
+
     " Buffer/file navigation {
         Plugin 'scrooloose/nerdtree'
         Plugin 'dbakker/vim-projectroot'
@@ -121,8 +129,14 @@
         "Plugin 'fholgado/minibufexpl.vim'
     " }
 
+    " Buffer/file management {
+        Plugin 'danro/rename.vim'
+        Plugin 'tpope/vim-eunuch'
+    " }
+
     " UI {
         Plugin 'justincampbell/vim-eighties'
+        " Plugin 'colwem/vim-eighties.git'
         Plugin 'bling/vim-airline'
         Plugin 'airblade/vim-gitgutter'
         Plugin 'gorodinskiy/vim-coloresque'
@@ -135,13 +149,14 @@
     " Alignment {
         Plugin 'junegunn/vim-easy-align'
         Plugin 'godlygeek/tabular'
+        Plugin 'nathanaelkane/vim-indent-guides'
         " Plugin 'vim-scripts/Align'
     "}
         
     " search {
         Plugin 'rking/ag.vim'
         "makes s like f but uses 2 chars 
-        Plugin 'goldfeld/vim-seek' 
+        " Plugin 'goldfeld/vim-seek' 
     "}
 
     " Tags {
@@ -168,11 +183,16 @@
     "}
         
     " tech specific {
-    
+        
+        " haskell {
+            Plugin 'Twinside/vim-haskellConceal'
+        " }
+        
         " css {
-            Plugin 'hail2u/vim-css3-syntax'
-            Plugin 'groenewege/vim-less'
-            Plugin 'cakebaker/scss-syntax.vim'
+            " Plugin 'hail2u/vim-css3-syntax'
+            " Plugin 'groenewege/vim-less'
+            " Plugin 'cakebaker/scss-syntax.vim'
+            Plugin 'wavded/vim-stylus'
             " Plugin 'vim-scripts/css_color.vim'
             " Plugin 'skammer/vim-css-color'
         "}
@@ -184,6 +204,9 @@
 
         " javascript {
             Plugin 'pangloss/vim-javascript'
+            " Plugin 'jelera/vim-javascript-syntax'
+            Plugin 'vim-scripts/JavaScript-Indent'
+            " Plugin 'othree/javascript-libraries-syntax.vim'
         " }
     
         " Latex {
@@ -196,7 +219,7 @@
 
         " Node {
             Plugin 'marijnh/tern_for_vim'
-            " Plugin 'digitaltoad/vim-jade'
+            Plugin 'digitaltoad/vim-jade'
             " Plugin 'kchmck/vim-coffee-script'
         "}
 
@@ -223,7 +246,17 @@
             " Plugin 'vim-scripts/SQLUtilities'
         "}
         
+        " Language Pack {
+            " Plugin 'sheerun/vim-polyglot'
+        "}
     " }
+
+    " organization/notes {
+        Plugin 'vimwiki/vimwiki'
+        Plugin 'xolox/vim-notes'
+        Plugin 'fmoralesc/vim-pad'
+    " }
+
 "}
 
 " unsetup {

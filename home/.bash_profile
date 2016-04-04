@@ -1,6 +1,6 @@
 # vim: ft=sh
 # Add `~/bin` to the `$PATH`
-export PATH=".:$HOME/bin:$PATH";
+export PATH=".:$HOME/bin:/usr/local/sbin:$PATH";
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -15,6 +15,9 @@ shopt -s nocaseglob;
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
+# History will ignore commands matched by $HISTIGNORE
+export HISTIGNORE="&:ls:la:exit"
+
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
@@ -25,30 +28,38 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-# Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-	source "$(brew --prefix)/etc/bash_completion";
-elif [ -f /etc/bash_completion ]; then
-	source /etc/bash_completion;
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi;
 
+#Add tab completion for many Bash commands
+# if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+        # source "$(brew --prefix)/etc/bash_completion";
+# elif [ -f /etc/bash_completion ]; then
+        # source /etc/bash_completion;
+# fi;
+
 # Enable tab completion for `g` by marking it as an alias for `git`
-if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-	complete -o default -o nospace -F _git g;
-fi;
+# if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+	# complete -o default -o nospace -F _git g;
+# fi;
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
 # Add tab completion for `defaults read|write NSGlobalDomain`
 # You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults;
+# complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+# complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
 # set vi mode
 set -o vi
-export HOMEBREW_GITHUB_API_TOKEN=b42f96b34a95d04bdabcb2a73bd64477890795f4
+
 
 source ~/.git-completion.bash
+source ~/.bash/mysql-colorize/mysql-colorize.bash
+
+export CDPATH=.:~:~/workshop
+export HOMEBREW_GITHUB_API_TOKEN=b42f96b34a95d04bdabcb2a73bd64477890795f4
