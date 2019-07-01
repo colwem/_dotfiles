@@ -208,90 +208,90 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 	else
 		command -nargs=+ HiLink hi def link <args>
 	endif
-	HiLink javaScriptEndColons              Operator
-	HiLink javaScriptOpSymbols              Operator
-	HiLink javaScriptLogicSymbols           Boolean
-	HiLink javaScriptBraces                 Function
-	HiLink javaScriptParens                 Operator
-	HiLink javaScriptTemplateDelim          Operator
+	hi link javaScriptEndColons              Delimiter
+	hi link javaScriptOpSymbols              Operator
+	hi link javaScriptLogicSymbols           Boolean
+	hi link javaScriptBraces                 Function
+	hi link javaScriptParens                 Operator
+	hi link javaScriptTemplateDelim          Operator
+		
+	hi link javaScriptComment                Comment
+	hi link javaScriptLineComment            Comment
+	hi link javaScriptDocComment             Comment
+	hi link javaScriptCommentTodo            Todo
 
-	HiLink javaScriptComment                Comment
-	HiLink javaScriptLineComment            Comment
-	HiLink javaScriptDocComment             Comment
-	HiLink javaScriptCommentTodo            Todo
+	hi link javaScriptDocTags                Special
+	hi link javaScriptDocSeeTag              Function
+	hi link javaScriptDocParam               Function
 
-	HiLink javaScriptDocTags                Special
-	HiLink javaScriptDocSeeTag              Function
-	HiLink javaScriptDocParam               Function
+	hi link javaScriptString                 String
+	hi link javaScriptRegexpString           String
+	hi link javaScriptTemplateString         String
 
-	HiLink javaScriptString                 String
-	HiLink javaScriptRegexpString           String
-	HiLink javaScriptTemplateString         String
+	hi link javaScriptNumber                 Number
+	hi link javaScriptFloat                  Number
 
-	HiLink javaScriptNumber                 Number
-	HiLink javaScriptFloat                  Number
+	hi link javaScriptGlobal                 Constant
+	hi link javaScriptCharacter              Character
+	hi link javaScriptPrototype              Type
+	hi link javaScriptConditional            Conditional
+	hi link javaScriptBranch                 Conditional
+	hi link javaScriptIdentifier             Define
+	hi link javaScriptRepeat                 Repeat
+	hi link javaScriptStatement              Statement
+	hi link javaScriptMessage                Keyword
+	hi link javaScriptReserved               Keyword
+	hi link javaScriptOperator               Operator
+	hi link javaScriptNull                   Type
+	hi link javaScriptBoolean                Boolean
+	hi link javaScriptLabel                  Label
+	hi link javaScriptSpecial                Special
+	hi link javaScriptSource                 Special
+	hi link javaScriptGlobalObjects          Special
+	hi link javaScriptExceptions             Special
 
-	HiLink javaScriptGlobal                 Constant
-	HiLink javaScriptCharacter              Character
-	HiLink javaScriptPrototype              Type
-	HiLink javaScriptConditional            Conditional
-	HiLink javaScriptBranch                 Conditional
-	HiLink javaScriptIdentifier             Identifier
-	HiLink javaScriptRepeat                 Repeat
-	HiLink javaScriptStatement              Statement
-	HiLink javaScriptMessage                Keyword
-	HiLink javaScriptReserved               Keyword
-	HiLink javaScriptOperator               Operator
-	HiLink javaScriptNull                   Type
-	HiLink javaScriptBoolean                Boolean
-	HiLink javaScriptLabel                  Label
-	HiLink javaScriptSpecial                Special
-	HiLink javaScriptSource                 Special
-	HiLink javaScriptGlobalObjects          Special
-	HiLink javaScriptExceptions             Special
+	hi link javaScriptDeprecated             Exception
+	hi link javaScriptError                  Error
+	hi link javaScriptParensError            Error
+	hi link javaScriptParensErrA             Error
+	hi link javaScriptParensErrB             Error
+	hi link javaScriptParensErrC             Error
+	hi link javaScriptDomErrNo               Error
 
-	HiLink javaScriptDeprecated             Exception
-	HiLink javaScriptError                  Error
-	HiLink javaScriptParensError            Error
-	HiLink javaScriptParensErrA             Error
-	HiLink javaScriptParensErrB             Error
-	HiLink javaScriptParensErrC             Error
-	HiLink javaScriptDomErrNo               Error
+	hi link javaScriptDomNodeConsts          Constant
+	hi link javaScriptDomElemAttrs           Label
+	hi link javaScriptDomElemFuncs           Type
 
-	HiLink javaScriptDomNodeConsts          Constant
-	HiLink javaScriptDomElemAttrs           Label
-	HiLink javaScriptDomElemFuncs           Type
+	hi link javaScriptWebAPI                 Type
 
-	HiLink javaScriptWebAPI                 Type
+	hi link javaScriptHtmlElemAttrs          Label
+	hi link javaScriptHtmlElemFuncs          Type
 
-	HiLink javaScriptHtmlElemAttrs          Label
-	HiLink javaScriptHtmlElemFuncs          Type
+	hi link javaScriptCssStyles              Type
 
-	HiLink javaScriptCssStyles              Type
+	hi link javaScriptBrowserObjects         Constant
 
-	HiLink javaScriptBrowserObjects         Constant
+	hi link javaScriptDOMObjects             Constant
+	hi link javaScriptDOMMethods             Type
+	hi link javaScriptDOMProperties          Label
 
-	HiLink javaScriptDOMObjects             Constant
-	HiLink javaScriptDOMMethods             Type
-	HiLink javaScriptDOMProperties          Label
+	hi link javaScriptAjaxObjects            Constant
+	hi link javaScriptAjaxMethods            Type
+	hi link javaScriptAjaxProperties         Label
 
-	HiLink javaScriptAjaxObjects            Constant
-	HiLink javaScriptAjaxMethods            Type
-	HiLink javaScriptAjaxProperties         Label
+	hi link javaScriptFuncKeyword            Define
+	hi link javaScriptFuncDef                Function
+	hi link javaScriptFuncExp                Function
+	hi link javaScriptFuncArg               	Special
+	hi link javaScriptFuncComma              Delimiter
+	hi link javaScriptFuncEq                 Operator
 
-	HiLink javaScriptFuncKeyword            Function
-	HiLink javaScriptFuncDef                PreProc
-	HiLink javaScriptFuncExp                Title
-	HiLink javaScriptFuncArg               	Special
-	HiLink javaScriptFuncComma              Operator
-	HiLink javaScriptFuncEq                 Operator
+	hi link javaScriptHtmlEvents             Constant
+	hi link javaScriptHtmlElemProperties     Label
 
-	HiLink javaScriptHtmlEvents             Constant
-	HiLink javaScriptHtmlElemProperties     Label
+	hi link javaScriptEventListenerKeywords  Type
 
-	HiLink javaScriptEventListenerKeywords  Type
-
-	HiLink javaScriptPropietaryObjects      Constant
+	hi link javaScriptPropietaryObjects      Constant
 
 	delcommand HiLink
 endif

@@ -1,0 +1,28 @@
+## Task Warrior Aliases
+alias tasks='task list'
+alias t='task'
+# alias ts='task start'
+# alias ta="task add project:"
+alias tn="task next"
+alias tl="task log"
+
+
+
+## Python specific aliases
+alias activate='source env/bin/activate'
+
+## JS and node aliases
+alias start-debug='DEBUG=autocron:* nodemon -e .js,.jade'
+alias mocha='NODE_ENV=test mocha'
+
+## Additional git aliases
+alias aliases-git="() {{ alias | grep git & git config --list | grep alias } | grep -- \$1 | awk '{print length, \$0;}' | sort -ns | cut -d\" \" -f2-}"
+## Vagrant aliases
+alias vagrant-kitty-ssh="kitty +kitten ssh -i .vagrant/machines/default/virtualbox/private_key -p 2222 vagrant@localhost"
+
+## Miscelaneous aliases that I haven't categorized yet
+
+# for watching a log file.  First prints the whole file then watches
+alias watch-log='tail -f -n +1'
+alias info='info --vi-keys'
+alias vim='nvim'

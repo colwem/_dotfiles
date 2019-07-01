@@ -5,6 +5,25 @@ set nocompatible
 "Needed sometimes in order to make BundleInstall work.
 set noshellslash  
 
+" load functions {{{
+" function! load(a) 
+  " for each a
+" }}}
+
+" filetype vim {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" habit function {{{
+" }}}
+
+" Neovim stuff {{{
+    let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
+    let g:python_host_prog  = '~/.pyenv/versions/2.7/bin/python' 
+" }}}
 
 " Load bundles {{{
 if filereadable(expand("~/.vimrc.bundles"))
@@ -14,12 +33,16 @@ endif
 
 " Unsorted fold"{{{
 let mapleader = ","
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "Split an HTML line such that the tags are on seperate lines and are properly
 "indented
-vmap <leader>x :s/<[^>]*>/\r&/g<cr>v`<= 
+vnoremap <leader>x :s/<[^>]*>/\r&/g<cr>v`<= 
 "turn off search highlighting for this search only with ,/
 "toggle search highlighting with F4
-noremap <leader>/ :nohlsearch<cr>
+set nohlsearch
+" noremap <leader>/ :nohlsearch<cr>
+noremap <leader>/ :set hlsearch! hlsearch?<CR>
 noremap <F4> :set hlsearch! hlsearch?<CR>
 
 "makes a 5 line margin at the bottom of the window so that you never scroll
@@ -28,7 +51,7 @@ set scrolloff=5
 "set sidescroll=15
 
 "toggle list mode with ,l
-noremap <leader>sl :set list! list?<cr>
+" noremap <leader>sl :set list! list?<cr>
 
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
@@ -90,7 +113,7 @@ set go=
 "make toggle button for menu
 
 " Don't use Ex mode, use Q for formatting
-map Q gq
+noremap Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -313,7 +336,7 @@ let g:PyFlakeDisabledMessages = 'E501,E221' "E221 multiple spaces around operato
 " Assorted customizations"{{{
 
 "deletes buffer without removing window
-map <leader>bd :Bclose<cr>
+noremap <leader>bd :Bclose<cr>
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
@@ -337,7 +360,7 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+noremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " nmap <silent> gc :set opfunc=TitleCase<CR>g@
 " vmap <silent> gc :<C-U>call TitleCase(visualmode(), 1)<CR>
@@ -379,24 +402,13 @@ nnoremap <leader>gt :GundoToggle<CR>
 
 " Airline config"{{{
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts=1
+" let g:airline_powerline_fonts=1
 "}}}
 
 " MiniBufExplorer config"{{{
 
 ""}}}
 
-"Latex {{{
-  " Latex-Box config"{{{
-    let g:LatexBox_viewer="SumatraPDF.exe"
-    let g:LatexBox_latexmk_preview_continuously=1
-    let g:LatexBox_latexmk_async=1
-  "}}}
-
-  " Latexmk config {{{
-    "map <leader>lmk :!start latexmk -pdf -pvc %<cr>
-  " }}}
-" }}}
 
 " SQLUtilities config"{{{
 
@@ -442,9 +454,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \'passive_filetypes': ['python', 'html'], }
 "}}}
 
+" To make vim work like vimium but I never use this
 " Tab page"{{{
-  map <S-H> gT
-  map <S-L> gt
+  " map <S-H> gT
+  " map <S-L> gt
 "}}}
 
 " To be consistent with C and D
@@ -452,8 +465,8 @@ nnoremap Y y$
 
 " Shortcuts
 " Change Working Directory to that of the current file
-cmap cwd lcd %:p:h
-cmap cd. lcd %:p:h
+" cmap cwd lcd %:p:h
+" cmap cd. lcd %:p:h
 
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
@@ -463,14 +476,14 @@ vnoremap > >gv
 cmap w!! w !sudo tee % >/dev/null
 
 " window command mapped to ,w
-map <Leader>w <C-w>
-map <Leader>w- <C-w>_
+noremap <Leader>w <C-w>
+noremap <Leader>w- <C-w>_
 
 
 
 " Easier horizontal scrolling
-map zl zL
-map zh zH
+noremap zl zL
+noremap zh zH
 
 " Pandoc"{{{
   let g:pandoc_use_hard_wraps = 1
@@ -481,6 +494,9 @@ map zh zH
 nnoremap <silent> <Leader>dt :ProjectRootExe NERDTree<cr>
 let NERDTreeIgnore=['\~$', '.pyc$']
 let NERDTreeShowLineNumbers=1
+
+nnoremap <Leader>nt :NERDTreeToggle<cr>
+nnoremap <Leader>nf :NERDTreeFind<cr>
 
 " NerdCommenter
 let NERDSpaceDelims = 1
@@ -543,6 +559,7 @@ let g:UltiSnipsEditSplit='vertical'
 
 let g:delimitMate_expand_cr = 2
 let g:delimitMate_expand_space = 1 
+au FileType elm let b:delimitMate_expand_cr = 1
 
 " }}}
 
@@ -569,9 +586,9 @@ set clipboard=unnamed "default register is now system clipboard
 
 " Easymotion {{{
 
-    nmap <Leader><Leader>s <Plug>(easymotion-sn)
-    xmap <Leader><Leader>s <Plug>(easymotion-sn)
-    omap <Leader><Leader>z <Plug>(easymotion-sn)
+    nnoremap <Leader><Leader>s <Plug>(easymotion-sn)
+    xnoremap <Leader><Leader>s <Plug>(easymotion-sn)
+    onoremap <Leader><Leader>z <Plug>(easymotion-sn)
 
     " let g:EasyMotion_use_upper = 1
     " let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
@@ -584,7 +601,7 @@ set clipboard=unnamed "default register is now system clipboard
 let g:smalls_auto_jump = 1
 
 " map normal-mode 's' for simple search
-nmap s <Plug>(smalls)
+nnoremap s <Plug>(smalls)
 " }}}
 
 " Easytags {{{
@@ -630,6 +647,7 @@ nnoremap S i<cr><esc>k$
 autocmd FileType javascript,html,python autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 
+
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_color_change_percent = 5
@@ -649,3 +667,37 @@ noremap <expr> gm ((indent('.') + strdisplaywidth(substitute(getline('.'), '\s*$
 command! SS echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 
 " call matchaddpos('Search', [line('.')])
+
+
+" vim-hardtime {{{
+let g:hardtime_default_on = 1
+" g:list_of_normal_keys = ["h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+" g:list_of_visual_keys = ["h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+" g:list_of_insert_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+" g:list_of_disabled_keys = []
+
+let g:hardtime_maxcount = 2
+let g:hardtime_timeout = 1000
+
+" let g:hardtime_showmsg = 1
+
+" let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
+
+let g:hardtime_ignore_quickfix = 1
+
+" let g:hardtime_allow_different_key = 1
+" }}}
+
+" helpclose
+nnoremap <leader>hc :helpclose<cr>
+
+" select last changed text.  Or last pasted
+" nnoremap gp `[v`]
+
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
+
+" GitHubURL {{{
+noremap <leader>ghl GitHubURL<cr>
+" }}}

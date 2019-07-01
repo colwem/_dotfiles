@@ -4,7 +4,7 @@
 [core]
 	excludesfile = /Users/colwem/.gitignore
 	autocrlf = input
-	editor = mvim -f
+	editor = vim
 [push]
 	default = simple
 [branch]
@@ -43,3 +43,5 @@
 	unstage = reset HEAD
 [url "https://"]
 	insteadOf = git://
+[fetch]
+	prune = true
