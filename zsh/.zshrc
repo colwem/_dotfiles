@@ -1,4 +1,4 @@
-source ~/antigen/antigen.zsh
+source /usr/share/zsh/share/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -57,11 +57,13 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH=.:~/bin:~/.cabal/bin:$PATH
 
 source ~/.zsh_aliases
-# OPAM configuration
-# . /Users/colwem/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+export PATH="/home/colwem/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
+
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
