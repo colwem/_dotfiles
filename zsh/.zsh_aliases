@@ -23,6 +23,11 @@ alias vagrant-kitty-ssh="kitty +kitten ssh -i .vagrant/machines/default/virtualb
 ## Miscelaneous aliases that I haven't categorized yet
 
 # for watching a log file.  First prints the whole file then watches
-alias watch-log='tail -f -n +1'
+alias watch-log='tail -f -n +1' # change this to less
 alias info='info --vi-keys'
+
+# vim
 alias vim='nvim'
+
+# ssh
+alias s="ssh"
