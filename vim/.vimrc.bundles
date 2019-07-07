@@ -280,6 +280,10 @@ Plug 'vimwiki/vimwiki'
 " " Plug 'takac/vim-hardtime'
 " " }
 
+" rust {
+Plug 'rust-lang/rust.vim'
+" }
+
 " " unsetup {
 " "
 call plug#end()            " required

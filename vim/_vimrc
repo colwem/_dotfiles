@@ -577,7 +577,7 @@ au FileType elm let b:delimitMate_expand_cr = 1
 " Easyclip {{{
 " let g:EasyClipShareYanks=1 "use yank file so that yanks are persistent and
                            " "shared between instances of vim
-set clipboard=unnamed "default register is now system clipboard
+set clipboard=unnamedplus "default register is now system clipboard
 " let g:EasyClipUsePasteToggleDefaults = 0 "<c-n> and <c-p> are already used
 
 " nmap <c-f> <plug>EasyClipSwapPasteForward 
