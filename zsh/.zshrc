@@ -82,3 +82,10 @@ if [ -f '/Users/colwem/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# npm
+export PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
