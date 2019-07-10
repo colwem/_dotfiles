@@ -1,4 +1,4 @@
-source [path to antigen]
+source /usr/share/zsh/share/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -47,32 +47,22 @@ antigen bundle vi-mode
 # Tell antigen that you're done.
 antigen apply
 
-
-
 source ~/.zsh_aliases
 
-#PATH
-export PATH="[path to pyenv]:$PATH"
+# pyenv
+export PATH="/home/colwem/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
 
-# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
+# fzf fuzzy filter
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--ansi"
 
-export CLOUDSDK_PYTHON="python2.7"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '[path to google cloud]' ]; then . '[path to google cloud]'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '[path to google cloud completion]' ]; then . '[path to google cloud completions]'; fi
-
+# Nvm Node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -84,6 +74,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 
+# CPAN config
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;

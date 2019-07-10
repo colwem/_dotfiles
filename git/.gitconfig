@@ -2,7 +2,7 @@
 	name = Martin Colwell
 	email = colwem@gmail.com
 [core]
-    excludesfile = [#FIX path to global ignore] 
+	excludesfile = /Users/colwem/.gitignore
 	autocrlf = input
 	editor = vim
 [push]
