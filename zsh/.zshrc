@@ -1,4 +1,4 @@
-source /usr/share/zsh/share/antigen.zsh
+source [path to antigen]
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -47,18 +47,12 @@ antigen bundle vi-mode
 # Tell antigen that you're done.
 antigen apply
 
-export PATH="/Users/colwem/Library/Python/2.7/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-#for macports
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-
-# cabal has to do with haskall
-export PATH=.:~/bin:~/.cabal/bin:$PATH
 
 source ~/.zsh_aliases
 
-export PATH="/home/colwem/.pyenv/bin:$PATH"
+#PATH
+export PATH="[path to pyenv]:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init -)"
@@ -74,10 +68,10 @@ export FZF_DEFAULT_OPTS="--ansi"
 export CLOUDSDK_PYTHON="python2.7"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/colwem/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/colwem/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '[path to google cloud]' ]; then . '[path to google cloud]'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/colwem/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/colwem/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '[path to google cloud completion]' ]; then . '[path to google cloud completions]'; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -90,8 +84,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 
-PATH="/home/colwem/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/colwem/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/colwem/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/colwem/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/colwem/perl5"; export PERL_MM_OPT;
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
