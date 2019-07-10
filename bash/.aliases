@@ -95,3 +95,5 @@ alias reload="exec $SHELL -l"
 #vitualenv
 alias activate="source env/bin/activate"
 
+# ssh
+alias s="ssh"

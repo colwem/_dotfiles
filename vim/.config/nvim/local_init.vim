@@ -29,4 +29,23 @@ else
   set backupdir=$HOME/.backup/,.
 endif
 
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+" let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
+
+" Delimite mate file specific delimiters to match
+au FileType rust let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+" NerdTree show hidden files
+let NERDTreeShowHidden=1
+
+
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore *.min.js -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif

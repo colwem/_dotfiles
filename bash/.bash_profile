@@ -63,3 +63,5 @@ source ~/.bash/mysql-colorize/mysql-colorize.bash
 
 export CDPATH=.:~:~/workshop
 export HOMEBREW_GITHUB_API_TOKEN=b42f96b34a95d04bdabcb2a73bd64477890795f4
+
+export PATH="$HOME/.cargo/bin:$PATH"
